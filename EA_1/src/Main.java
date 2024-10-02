@@ -2,13 +2,28 @@ import javax.security.sasl.SaslServer;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.ListIterator;
 
 public class Main {
-    public static boolean isPalindrome(List<Character> ls) {
+    /*public static boolean isPalindrome(List<Character> ls) {
         int i, j;
         for (i = 0, j = ls.size() - 1; i < j; i++, j--) {
             if (ls.get(i) != ls.get(j))
                 return false;
+        }
+        return true;
+    }*/
+
+    public static  boolean isPalindrome(List<Character> ls){
+        ListIterator<Character> foward = ls.listIterator();
+        ListIterator<Character> backward = ls.listIterator(ls.size());
+
+        int i,j;
+
+        for(i = 0, j = ls.size() - 1; i < j; i++, j--) {
+            if(!foward.next().equals(backward.previous())){
+                return false;
+            }
         }
         return true;
     }
@@ -62,9 +77,15 @@ public class Main {
         System.out.println("Test 4 'insane': " + isPalindrome(list4));
         System.out.println();
         //
-        int nInitial = 10000;
+
+        /*int nInitial = 10000;
         int nFinal = 50000;
         int increment = 1000;
+        */
+
+        int nInitial = 1000000;
+        int nFinal = 5000000;
+        int increment = 100000;
 
         System.out.println("Number\tArrayListTime\tLinkedListTime");
 
