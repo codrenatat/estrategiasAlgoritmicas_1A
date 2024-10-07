@@ -1,7 +1,12 @@
 import static java.util.Collections.swap;
 
 public class Heapsort {
+
+    private static int comparaciones = 0;
+    private static int movimientos = 0;
+
     private static <T extends Comparable<? super T>> boolean greaterThan(T a, T b){
+        comparaciones++;
         return a.compareTo(b) > 0;
     }
 
@@ -46,8 +51,22 @@ public class Heapsort {
     }
 
     private static <T> void swap(T[] a, int i, int j) {
+        movimientos += 3;
         T temp = a[i];
         a[i] = a[j];
         a[j] = temp;
+    }
+
+    public static void resetCounters() {
+        comparaciones = 0;
+        movimientos = 0;
+    }
+
+    public static int getComparaciones() {
+        return comparaciones;
+    }
+
+    public static int getMovimientos() {
+        return movimientos;
     }
 }

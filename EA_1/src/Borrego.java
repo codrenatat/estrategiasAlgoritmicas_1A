@@ -13,7 +13,14 @@ public class Borrego implements Comparable<Borrego>{
     }
 
     @Override
-    public int compareTo(Borrego borreguito){
-        return Integer.compare(this.kilos, borreguito.kilos);
+    public int compareTo(Borrego borreguito) {
+        int result = Integer.compare(this.kilos, borreguito.kilos);
+
+        if (result == 0) {
+            result = this.nombre.compareTo(borreguito.nombre);
+        }
+
+        return result;
     }
+
 }
