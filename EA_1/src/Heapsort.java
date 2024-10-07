@@ -17,7 +17,7 @@ public class Heapsort {
         int left = left(root);
         int right = right(root);
         int largest = root;
-        
+
         if (left < heapSize && greaterThan(a[left], a[largest])) {
             largest = left;
         }
